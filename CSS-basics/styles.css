@@ -1,0 +1,50 @@
+/*Universal selector*/
+* {
+  color: purple;
+}
+
+/*Type or element selector*/
+/*All divs will be selected except for <p>*/
+
+div {
+  color: white;
+}
+
+.alert-text {
+  color: red;
+}
+
+/*Use hash tag for IDs not period*/
+#title {
+  background-color: red;
+}
+
+/*Grouping selectors to avoid repetitions*/
+.read,
+.unread {
+  color: white;
+  background-color: black;
+}
+
+.read {
+  /*add unique declarations*/
+  padding-left: 2;
+}
+.unread {
+  /*add unique declarations*/
+  padding: 2;
+}
+
+/*chaining selectors*/
+.subsection.header {
+    color: red;
+}
+
+.subsection#preview {
+    color: blue;
+}
+
+/*Descendant combinator*/
+.ancestor .contents {
+    color: green;
+}
