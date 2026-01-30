@@ -9,9 +9,20 @@ function getComputerChoice() {
   }
 }
 
-function getHumanChoice() {
-  let choice = prompt("Enter your choice");
-  return choice.toLowerCase();
+function getHumanChoice(input) {
+  let choice = input;
+  return choice;
+}
+let humanScore = 0;
+let computerScore = 0;
+
+const results = document.querySelector("div");
+let total = document.createElement("span");
+total.textContent = `The Score is: \nYou: ${humanScore}\nComputer: ${computerScore}`;
+results.appendChild(total);
+
+function updateScore() {
+  total.textContent = `The Score is: \nYou: ${humanScore}\nComputer: ${computerScore}`;
 }
 
 let humanSelection = getHumanChoice();
@@ -25,22 +36,25 @@ function playRound(humanChoice, computerChoice) {
   ) {
     console.log(`You Win! ${humanChoice} beats ${computerChoice}`);
     humanScore += 1;
+    total.textContent = `The Score is: \nYou: ${humanScore}\nComputer: ${computerScore}`;
   } else if (humanChoice === computerChoice) {
     console.log("Draw");
   } else {
     console.log(`Computer Wins! ${computerChoice} beats ${humanChoice}`);
     computerScore += 1;
+    total.textContent = `The Score is: \nYou: ${humanScore}\nComputer: ${computerScore}`;
   }
 }
-let humanScore = 0;
-let computerScore = 0;
+
+const choices = ["rock", "paper", "scissors"];
+
+document.querySelectorAll("button").forEach((button, index) => {
+  button.addEventListener("click", () => {
+    playRound(choices[index], getComputerChoice());
+  });
+});
 
 function playGame() {
-  playRound(humanSelection, computerSelection);
-  playRound(humanSelection, computerSelection);
-  playRound(humanSelection, computerSelection);
-  playRound(humanSelection, computerSelection);
-  playRound(humanSelection, computerSelection);
   console.log(`The Score is:\nYou: ${humanScore}\nComputer: ${computerScore}`);
 }
 
